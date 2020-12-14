@@ -1,0 +1,723 @@
+#include <iostream>
+
+using namespace std;
+//золоті злитки
+int main() {
+    int x1, x2, x3, l;
+    cin >> x1 >> x2 >> x3;
+    l = (x1 + x2 + x3) / 2;
+    if (x1 + x2 == l || x1 + x2 == l || x1 + x2 == l) cout << 0;
+    else
+    {
+        if (l < x1) cout << 1 << endl << l << ' ' << x1 - l;
+        else
+        {
+            if (l < x1 + x2) cout << 2 << endl << l - x1 << ' ' << x1 + x2 - l;
+            else cout << 3 <<endl <<  l - x1 - x2 << ' ' <<  l;
+        }
+    }
+}
+
+//банкомат----------------------------------------------------------------------------------------------
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+        long long n,x,a,b,c,d,e,f,S;
+        cin>>n;
+        if(n%10!=0) cout<<-1;
+        else{
+            a=n/500;
+            n=n%500;
+            b=n/200;
+            n=n%200;
+            c=n/100;
+            n=n%100;
+            d=n/50;
+            n=n%50;
+            e=n/20;
+            n=n%20;
+            f=n/10;
+            S=a+b+c+d+e+f;
+            cout<<S;
+        }
+
+}
+
+//ПЗ---------------------------------------------------------------------------------------------------------
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    long long n;
+    cin>>n;
+    cout<<(n-1)%9+1;
+}
+
+//римські цифри--------------------------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+using namespace std;
+const string Rom[]={"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I", ""};
+const int Ar[]={1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1, 0};
+string Roman(int arab)
+{
+   string roman;
+   int i=0;
+   while(arab > 0) {
+       while(Ar[i] <= arab) { roman+=Rom[i]; arab-=Ar[i]; }
+       ++i;
+   }
+   return roman;
+}
+int Arab(string roman)
+{
+   int arab=0, i=0;
+   while(roman!="") {
+       while(Rom[i]==roman.substr(0, Rom[i].length())) {
+           roman.replace(0, Rom[i].length(), "");
+           arab+=Ar[i];
+       }
+       ++i;
+   }
+   return arab;
+}
+
+int main()
+{
+   string first, second;
+   char c;
+   while((c=getchar())!='+') first.push_back(c);
+   while((c=getchar())!='\n') second.push_back(c);
+   cout << Roman(Arab(first) + Arab(second)) << endl;
+   return 0;
+}
+
+//------------------------------------------------------------------------------------------------------------------
+#include<bits/stdc++.h>
+using namespace std;
+
+//prosta zadacha-------------------------------------------------------------------------------------------------------
+void func() {
+    int a,b,n;
+    cin >> n;
+    a = n/10;
+    b =n%10;
+    cout << a << " " << b;
+}
+
+//cube and points------------------------------------------------------------------------------------------------------
+void func_2() {
+    int a,c;
+    const int b = 4;
+    cin >> a;
+    c = a*b;
+    cout << c;
+}
+
+//average of int-----------------------------------------------------------------------------------------------------------
+void func_3() {
+    int a,b,c,average;
+    cin >> a >> b >> c;
+    average = (a+b+c)/3;
+    cout << average;
+}
+
+//count digits---------------------------------------------------------------------------------------------------------------
+int countDig(long long n) {
+    if(n == 0)
+    return 0;
+    return 1+ countDig(n/10);
+}
+void func_4() {
+    long long n;
+    cin >> n;
+    cout << "Number of digits is : " << countDig(n);
+}
+
+int main() {
+    func();
+    func_2();
+    func_3();
+    func_4();
+} 
+
+//Bubble sort-----------------------------------------
+#include<iostream>
+using namespace std;
+int main ()
+{
+   int i, j,temp,pass=0;
+   int a[10] = {10,2,0,14,43,25,18,1,5,45};
+   cout <<"Input list ...\n";
+   for(i = 0; i<10; i++) {
+      cout <<a[i]<<"\t";
+   }
+cout<<endl;
+for(i = 0; i<10; i++) {
+   for(j = i+1; j<10; j++)
+   {
+      if(a[j] < a[i]) {
+         temp = a[i];
+         a[i] = a[j];
+         a[j] = temp;
+      }
+   }
+pass++;
+}
+cout <<"Sorted Element List ...\n";
+for(i = 0; i<10; i++) {
+   cout <<a[i]<<"\t";
+}
+cout<<"\nNumber of passes taken to sort the list:"<<pass<<endl;
+return 0;
+}
+
+//reverse-----------------------------------------------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int num, rev=0;
+    cin >> num;
+        while(num>0){
+            rev = rev*10 + num%10;
+            num/=10;
+        }
+        cout << rev << endl;
+}
+
+//шаблон-----------------------------------------------------------------------------
+#include <iostream>
+#include <string>
+using namespace std;
+ 
+int main() {
+    long long n;
+    string s1 = "", s2 = "";
+    cin >> n;
+    for (int i = 0; i < n; i++){
+        if (i % 2 == 0){
+            s1 += "*";
+            s2 += " ";
+        }
+        else {
+            s2 += "*";
+            s1 += " ";
+        }
+    }
+    for (int i = 0; i < n; i++){
+        if (i % 2 == 0){
+            cout << s1 << endl;
+        }
+        else cout << s2 << endl;
+    }
+    return 0;
+}
+//palindrome-------------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int n, num, digit, rev = 0;
+    cin >> n;
+    n = num;
+
+    do{
+        digit = num%10;
+        rev = (rev*10) + digit;
+        num = num / 10;
+    }while(num!=0);
+    cout << rev << endl;
+    if(n == rev){
+        cout << "Yes";
+    }
+    else cout << "No";
+}
+
+//count words--------------------------------------
+#include<iostream>
+using namespace std;
+
+int main(){
+    string s;
+    int k = 0;
+    while(cin >> s){
+        if(s!="-")k++;
+    }
+    cout << k;
+}
+
+//calculator------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    char op;
+    int a, b;
+    cin >> a;
+
+    while(cin >> op >> b){
+        if(op == '+')a = a+b;
+        if(op == '-')a = a-b;
+    }
+    cout << a;
+}
+
+//alfavitne graffiti
+#include<iostream>
+using namespace std;
+
+int main(){
+    string s="a";
+    int n;
+    cin >> n;//5
+    int l = n-1;
+
+    for(int i = 1;i<=n;i++){
+        cout << 'a';
+        for(int j = 1;j<=n;j++);
+            cout << " ";
+            cout << s << endl;
+            l--;
+            char x=(char) (97+i);//a+b+c...
+            s=s+x;
+    }
+}
+
+//prefix pidpyadka
+#include<iostream>
+using namespace std;
+
+int main() {
+    string s,ss = "";
+    int l,r;
+    cin >> s >> l >> r;
+    l--;r--;
+    cout << r-l+2;
+
+    for(int i=l;i<r;i++){
+        ss=ss+s[i];
+        cout << ss << "\n";
+    }
+}
+
+//sufix
+#include<iostream>
+using namespace std;
+
+int main() {
+    string s;
+    int l,r;
+    cin >> s >> l >> r;
+    int k=r-l << '\n';
+    cout << r-l+2 << '\n';
+
+    for(int i=l;i<r;i++){
+        cout << s.substr(i,k)<< '\n';
+        k--;
+    }
+}
+
+//smuzka--------------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin >>n>>m;
+
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cout << "#";
+        }
+        cout << "\n";
+    }
+}
+
+//ramka***--------------------------------------------------------
+//     * *
+//     ***
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+    const int n=3;
+    int m;
+    cin >> m;
+
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            if(i == 1 || i == n || j == 1 || j == m)
+            cout << "*";
+            else cout << " ";
+        }
+        cout << "\n";
+    }
+}
+
+//ramka v2.0------------------------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int n;
+    int m;
+    cin >> n >> m;
+
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=m;j++){
+            if(i == 1 || i == n || j == 1 || j == m)
+            cout << "*";
+            else cout << " ";
+        }
+        cout << "\n";
+    }
+}
+
+//ramka x--------------------------------
+#include<iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(j==i || j == (n+1-i))
+            cout << "*";
+            else cout << " ";
+        }
+        cout << endl;
+    }
+}
+
+//кавун--------------------------------------------------
+#include <iostream>
+using namespace std;
+ 
+int main() {
+    int n,min,max,x;
+    cin >> n;
+    if (n<2) cout << "Ooops!";
+    else {
+        cin >> min; 
+        max=min;
+        for (int i=0; i<n-1; i++) {
+            cin >> x;
+            if (x<min) min=x;
+            if (x>max) max=x;
+        }
+        cout << min << " " << max;
+    }
+    return 0;
+}
+
+//виручка театру----------------------------------
+#include <iostream>
+using namespace std;
+ 
+int main() {
+    int x [500*500];
+    int n, m;
+    cin >> n >> m;
+    int nm= n*m;
+    for(int i = 1; i <= nm; i++){
+        cin >> x[i];
+    }
+    int k;
+    long long int v = 0;
+    for(int i = 1; i <= nm; i++){
+        cin >> k;
+        v+= k*x[i];
+    }
+    cout << v << endl;
+    return 0;
+}
+//ГОЛОСНІ ПІДРАХУВАТИ------------------------------------------------------------
+#include <iostream>
+#include <stdio.h>
+#include <cstring>
+using namespace std;
+
+int main (){
+	int length,i,j,kol=0; 
+	char vowel []="AEIOUY"; 
+	char text [100]; 
+	gets (text); //функция считывает все введённые символы с пробелами до тех пор, пока не будет нажата клавиша Enter 
+	length=strlen (text); 
+	for (j=0; j<=5; j++){
+		for (i=0; i<=length; i++)
+			if (text[i]==vowel[j])
+				kol=kol+1;
+	}
+	cout << kol << endl;
+	return 0;
+}
+
+//stringlength-----------------------------------------
+#include <iostream>
+#include <cstring>
+using namespace std;
+ 
+int main() {
+    char s[101];
+    cin.getline(s,100);
+    cout << s << endl << strlen(s);
+    return 0;
+}
+
+//NewCompiler--------------------------
+#include <iostream>
+#include <stdio.h>
+ 
+using namespace std;
+ 
+int main() {
+    int c;
+    int a;
+    char b;
+    c = getchar();
+    while ((a = getchar()) != EOF) {
+        if (c == '-') { 
+            if (a == '>') {
+                cout << ".";
+                a = getchar();
+            } else {
+                putchar(c);
+            }
+        } else if (c == '/') { 
+            putchar(c);
+            if (a == '/') {
+                putchar(a);
+                while ((b = getchar()) != '\n') {
+                    putchar(b);
+                }
+                cout << endl;
+                a = getchar();
+            }
+        } else putchar(c);
+        c = a;
+    }
+}
+
+//wordPalindrome
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+using namespace std;
+ 
+int main()
+{
+	const int startSize = 256;
+	char s[startSize];
+	char s_1[startSize];
+	cin.getline(s, 256);
+	int j = 0;
+	for (int i = 0; i < startSize; i++)
+	{
+		if (s[i] == ' ') continue; 
+		//учитываем, что пробел при чтении никак не произносится
+		s_1[j] = s[i];
+		j++;
+	}
+	int resSize = strlen(s_1);
+	char * s_2 = new char[resSize + 1];
+	for (int i = 0; i < resSize; i++)
+	{
+		s_2[i] = s_1[resSize - 1 - i];
+	}
+	s_2[resSize] = '\0';
+	if (!strcmp(s_1, s_2))
+	{
+		cout << "YES\n";
+	}
+	else
+	{
+		cout << "NO\n";
+	}
+	return 0;
+}
+
+//звичайна перестановка-----------------------
+#include <iostream>
+#include <algorithm>
+#include <cstring>
+#include <cstdio>
+
+using namespace std;
+
+char a[1005], b[1005];
+int aa[150], bb[150];
+
+int main() {
+    while (gets(a)) {
+        gets(b);
+        for (int i = 0; i < 150; ++i) {
+            aa[i]=0;
+            bb[i]=0;
+        }
+        for (int i = 0; i < strlen(a); ++i)
+            aa[a[i]]++;
+        for (int i = 0; i < strlen(b); ++i)
+            bb[b[i]]++;
+
+        for (char i = 'a'; i <= 'z'; ++i) {
+            int m=min(aa[i],
+bb[i]);
+            for (int j = 0; j < m; ++j) {
+                cout<<i;
+            }
+        }
+        cout<<endl;
+    }
+}
+//к-сть слів---------------------------
+#include<iostream>
+using namespace std;
+
+int main(){
+    string s;
+    int k = 0;
+    while(cin >> s)k++;
+    cout << k;
+}
+
+//palindrome----------------------------
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    string s,I(""),O;
+    while(cin>>s)
+    {
+        I=I+s;
+    }
+    O=I;
+    reverse(O.begin(),O.end());
+    if(O==I)cout<<"YES";
+    else cout<<"NO";
+}
+
+//піднесення до степеня за модулем
+#include <iostream>
+using namespace std;
+long power (long a, long n, long m) {
+    if (n == 0)
+        return 1 % m;
+    if (n % 2 == 1)
+        return (power (a, n - 1, m) * a) % m;
+    else {
+        return power ((a * a) % m, n/2, m);
+    }
+}
+ 
+int main() {
+    long a, b, m;
+    cin >> a >> b >> m;
+    cout << power (a, b, m);
+    return 0;
+}
+
+//nsd---------------------------
+#include <iostream>
+using namespace std;
+int nsd(int a, int b) {
+    return (a == 0) ? b: nsd(b % a, a);
+}
+ 
+int main() {
+    int n, m = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        int a;
+        cin >> a;
+        m = nsd(m, a);
+    }
+    cout << m;
+    return 0;
+}
+
+//sum of int V1.0 ----------------------
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, sum=0;
+    cin >> n;
+    while(n){
+        sum += n%10;
+        n /= 10;
+    }
+    cout << sum;
+}
+
+//factorial------------------
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    long long fact = 1;
+    cin >> n;
+    for(int i=1;i<=n;i++){
+        fact *= i;
+    }
+    cout << fact;
+    return 0;
+}
+
+//bit operations---------------------
+#include <iostream>
+#include<cstdlib>
+#include<cstdio>
+using namespace std;
+
+int main() {
+    unsigned int x = 122, a = 45, b = 23, c;
+    x = ~x;
+    cout << x << endl;
+    c = a | b;
+    cout << c << endl;
+    c = a&b;
+    cout << c << endl;
+    c = a^b;
+    cout << c << endl;
+}
+
+//sum of integers V2.0-------------------------
+#include <iostream>
+
+using namespace std;
+
+int pidnesenja(int n)
+{
+    n=abs(n);
+    int sum=0;
+    while (n>0)
+    {
+        sum=sum+n%10;
+        n/=10;
+    }
+    return sum;
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    n=pidnesenja(n);
+    cout << n;
+} 
